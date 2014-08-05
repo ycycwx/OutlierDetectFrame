@@ -1,0 +1,52 @@
+#!/usr/bin/env python3
+
+from ..datamodel.data import Data
+from ..algorithm.outlier import OutlierBasic
+from ..utils.distance import Distance
+from ..utils.log import LOG
+
+class ${ProjectName}(OutlierBasic):
+    def __init__(self, data):
+        '''
+        Data Format:
+            Dict {
+                KEY    =>  string,  make sure that KEY could be sorted
+                VALUE  =>  list,    list  =>  float
+            }
+
+        EXAMPLE: {'20130721': [2.1, 2.4, ...],
+                  '20130722': [0.5, 2,1, ...],
+                  '........': [..., ..., ...],
+                  '20130730': [0.7, 2.4, ...]}
+        '''
+        OutlierBasic.__init__(self, data)
+
+    def set_conf(self, conf):
+        """
+        ** Must Overwrite **
+        Set configurations using in outlier detecting algorithm like example or whatever you want to use
+
+        example:
+            self._target     = conf.get('target', None)
+            self._distance   = getattr(Distance, conf.get('dist', 'euclidean'))
+            self._norm_range = conf.get('norm_range', 0.5)
+            self._threshold  = conf.get('threshold', 0.25)
+            ...
+        """
+        pass
+
+    def run(self):
+        '''
+        ** Must Overwrite **
+        Main phase in this algorithm
+
+        INPUT:
+            Params which were inputted above:
+                data => Data
+                conf => Dict
+
+        OUTPUT:
+            Outlier Keys in a List:
+                [key1, key2, ...]
+        '''
+        pass
