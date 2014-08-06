@@ -19,7 +19,8 @@ class LOG:
     '''
     def __init__(self, \
             logfile = 'out.log', \
-            format  = '[%(asctime)s] (%(levelname)s) - %(filename)s:%(lineno)d : %(message)s', \
+            # format  = '[%(asctime)s] (%(levelname)s) - %(filename)s:%(lineno)d : %(message)s', \
+            format  = '[%(asctime)s] (%(levelname)s) - %(message)s', \
             name    = '' \
             ):
   

@@ -17,7 +17,7 @@ class CommandLine:
           -h, --help            show this help message and exit
           -n NEW_ALGORITHM, --new NEW_ALGORITHM
                                 create a new algorithm for outlier detecting
-          -c, --clear           WARNING!!!: clear all log files
+          -c, --clear           WARNING!!! clear all log files
     '''
     def __init__(self):
         self.log = LOG(logfile='log/CommandLine.log')
@@ -28,7 +28,7 @@ class CommandLine:
         # parser.add_argument('-f', '--file', dest='file', nargs='*', help="feedback file or files")
 
         parser.add_argument('-n', '--new', dest='new_algorithm', help="create a new algorithm for outlier detecting")
-        parser.add_argument('-c', '--clear', dest='clear', action="store_true", default=False, help="WARNING!!!: clear all log files")
+        parser.add_argument('-c', '--clear', dest='clear', action="store_true", default=False, help="WARNING!!! clear all log files")
         self.args = parser.parse_args()
 
         if self.args.clear:

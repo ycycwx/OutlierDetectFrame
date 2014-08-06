@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-import sys
-import os
 from ..datamodel.data import Data
 from ..algorithm.OutlierBasic import OutlierBasic
 from ..utils.distance import Distance

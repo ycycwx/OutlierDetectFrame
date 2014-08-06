@@ -3,6 +3,8 @@
 from collections import defaultdict
 import numpy as np
 
+from ..utils.excepts import DataFormatError
+
 class Data:
     def __init__(self, data):
         """
@@ -18,6 +20,7 @@ class Data:
                   '20130730': [0.7, 2.4, ...]}
         """
         self._data = data
+        self.check()
 
     def __str__(self):
         return str(self._data)
@@ -40,6 +43,7 @@ class Data:
 
         format:
             the same as self._data
+
         if update value is True:
             update the self._data with data
         """
@@ -47,14 +51,47 @@ class Data:
             self._data.update(data)
         else:
             self._data = data
+        self.check()
 
     def get(self):
+        '''
+        Return data
+        '''
         return self._data
 
+    def delete(self, key):
+        '''
+        Delete an element in data
+        '''
+        del self._data[key]
+
+    def check(self):
+        '''
+        Check format of data
+        '''
+        values = list(self._data.values())
+        length = len(values[0])
+        for value in values:
+            try:
+                assert len(value) is length
+            except:
+                raise DataFormatError('Length of input data error')
+            for ele in value:
+                try:
+                    float(ele)
+                except:
+                    raise DataFormatError('Element "' + str(ele) + '" is not integer or float value in input data')
+
     def clear(self):
+        '''
+        Clear data into an empty dictionary
+        '''
         self._data = {}
 
     def normalize(self):
+        '''
+        Normalize the input data
+        '''
         lst = np.array([ value for value in self._data.values() ], dtype='float_')
 
         maximum = lst.max(1)
@@ -70,10 +107,3 @@ class Data:
         for dat in self._data:
             self._data[dat] = list(normalize[cnt])
             cnt += 1
-
-if __name__=='__main__':
-    d = {'20130723': [0.1,1,1,3], '20130721': [2,0,1,3], '20130722': [3,2,1,5.1]}
-    a = Data(d)
-    a.normalize()
-    print(a)
-    # print(len(a))
