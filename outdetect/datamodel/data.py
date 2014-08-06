@@ -7,11 +7,11 @@ class Data:
     def __init__(self, data):
         """
         Sets data to the dataset
-        ================================================================
+
         dictionary:
             KEY    =>  string,  make sure that KEY will be sorted
             VALUE  =>  list,    list  =>  float
-        ================================================================
+
         EXAMPLE: {'20130721': [2.1, 2.4, ...],
                   '20130722': [0.5, 2,1, ...],
                   '........': [..., ..., ...],
@@ -37,7 +37,7 @@ class Data:
     def set(self, data, update=False):
         """
         Sets data or update data
-        ================================================================
+
         format:
             the same as self._data
         if update value is True:
@@ -72,7 +72,6 @@ class Data:
             cnt += 1
 
 if __name__=='__main__':
-    # d = [('20130721_05', 6), ('20130721_02', 2), ('20130721_01', 3)]
     d = {'20130723': [0.1,1,1,3], '20130721': [2,0,1,3], '20130722': [3,2,1,5.1]}
     a = Data(d)
     a.normalize()

@@ -11,13 +11,13 @@ class CommandLine:
     '''
     Command line to control outlier detection framework.
 
-        usage: cmdline.py [-h] [-n NEW_ALGORITHM] [-c]
+        usage: cli.py [-h] [-n NEW_ALGORITHM] [-c]
 
         optional arguments:
           -h, --help            show this help message and exit
           -n NEW_ALGORITHM, --new NEW_ALGORITHM
                                 create a new algorithm for outlier detecting
-          -c, --clear           clear log files
+          -c, --clear           WARNING!!!: clear all log files
     '''
     def __init__(self):
         self.log = LOG(logfile='log/CommandLine.log')
