@@ -1,59 +1,59 @@
-OutlierDetectFrame
+异常检测框架
 ==================
 
-Enviroment
+环境
 ---------
-- Works with *Python2.6+* or *Python3.3+*
-- Works with *Numpy1.8*
+- 需要 *Python2.6+* 或者 *Python3.3+*
+- 需要 *Numpy1.8*
 
-Usage
+用法
 ---------
-1. Create a new algorithm in outlier detection. (using `cli.py -n`)
+1. 创建一新的异常检测算法 (可以使用 `cli.py -n ${算法名称}`)
 
-- **Must inherit**
+- **必须继承**
 >   - outdetect.algorithm.OutlierBasic.OutlierBasic
 
-- **Could inherit**
+- **可以import**
 >   - outdetect.utils.distance.${Distance}
 >   - outdetect.utils.log.LOG
 >   - outdetect.utils.excepts.${Exception}
 >   - ......
 
-2. Create a python program using OutlierDetectFrame.
+2. 使用本框架建立一个python异常检测程序
 
-- **Must import**
+- **必须import**
 >   - outdetect.datamodel.data.Data
 >   - outdetect.algorithm.${Algorithm}
 
-- **Could import**
+- **可以import**
 >   - outdetect.utils.distance.${Distance}
 >   - outdetect.utils.log.LOG
 >   - outdetect.utils.excepts.${Exception}
 >   - ......
 
-3. Example program in `./example.py`.
+3. `./example.py`里是一个示例程序
 
 Cli.py
 ----------------------
-`cli.py` is a command line tool for the framework.
+`cli.py` 是本框架的命令行工具
 
-> - Create a new template of outlier detection algorithm.
+> - 创建一个新的异常检测算法，生成的模版会在`/outdetect/Algorithm/`下
 > ```
 > ./cli.py -n ${Name}
 > ```
-> - Clear log files.
+> - 清除所有日志文件
 > ```
 > ./cli.py -c
 > ```
-> - Get help.
+> - 获得帮助
 > ```
 > ./cli.py -h
 > ```
 
-Structure
+结构
 ---------
 -----------
-### Folder tree
+### 文件夹目录
     .
     ├── README.md
     ├── README_CHS.md
@@ -81,13 +81,13 @@ Structure
 
 -----------
 ### outdetect.datamodel.data.Data
-Input => ***Dict***
+输入 => ***字典(Dict)***
 >       {
->           KEY    =>  string,  make sure KEY will be sorted
+>           KEY    =>  string,  会根据KEY排序
 >           VALUE  =>  list,    list  =>  float
 >       }
 
-***Example***
+***示例***
 >       {
 >           '20130721': [2.1, 2.4, ...],
 >           '20130722': [0.5, 2,1, ...],
@@ -97,7 +97,7 @@ Input => ***Dict***
 
 -----------
 ### outdetect.algorithm.OutlierBasic.OutlierBasic
-***Must overwrite*** 
+***必须覆写*** 
 >       {
 >           set_conf           =>  set configures below
 >           run                =>  run program
@@ -106,13 +106,13 @@ Input => ***Dict***
 
 -----------
 ### outdetect.utils.log.LOG
-***Log handler in outlier detection***
+***日志处理***
 >       {
 >           Console: Min Level INFO
 >           LogFile: Min Level WARNING
 >       }
 
-***Format example***
+***输出示例***
 >       {
 >           [2014-08-21 23:45:56,977] (ERROR) - error
 >           [2014-08-21 23:45:56,978] (WARNING) - warn
@@ -145,7 +145,7 @@ Input => ***Dict***
 >           outlier_detection  =>  same as run
 >       }
 
-***Configures***
+***配置***
 >       {
 >           target      =>  string, Default: None
 >           dist        =>  string, Default: euclidean 

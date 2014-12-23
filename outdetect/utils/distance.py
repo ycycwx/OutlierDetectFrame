@@ -58,13 +58,3 @@ class Distance:
                 dtw[i, j] = float(cost) + float(min_route)
         
         return dtw[len(item1) - 1, len(item2) - 1]
-
-
-if __name__ == '__main__':
-    dist = Distance()
-    item1 = [5, 4, 3]
-    item2 = [5, 3, 4.3]
-    print(dist.cosine(item1, item2))
-    print(dist.euclidean(item1, item2))
-    print(dist.cross_correlation(item1, item2))
-    print(dist.dynamic_time_wraping(item1, item2))

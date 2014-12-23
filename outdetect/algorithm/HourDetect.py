@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
+import numpy as np
+
 from ..datamodel.data import Data
 from ..algorithm.OutlierBasic import OutlierBasic
 from ..utils.distance import Distance
-from ..utils.log import LOG
-import numpy as np
 
 class HourDetect(OutlierBasic):
     def __init__(self, data):
@@ -118,15 +118,3 @@ class HourDetect(OutlierBasic):
 
     def outlier_detection(self):
         return self.run()
-
-if __name__=='__main__':
-    data = Data({'20130721': [2.1, 2.4, 2.2, 2.1],
-                 '20130722': [0.5, 2.1, 2.3, 3.1],
-                 '20130723': [0.7, 2.4, 2.0, 0.1]})
-    data.normalize()
-
-    od = HourDetect(data)
-    conf = {'target':'visitUser', 'dist':'euclidean', 'norm_range':0.5}
-    od.set_conf(conf)
-    od.run()
-    # od.save()

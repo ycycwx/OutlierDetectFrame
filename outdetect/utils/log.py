@@ -6,15 +6,15 @@ class LOG:
     '''
     Log handler in outlier detection
     {
-        Console: Level INFO
-        LogFile: Level WARNING
+        Console: Min Level INFO
+        LogFile: Min Level WARNING
     }
 
     Format example
     {
-        [2014-08-03 16:17:39,363] (ERROR) - log.py:49 : error
-        [2014-08-03 16:17:39,364] (WARNING) - log.py:52 : warn
-        [2014-08-03 16:17:39,364] (INFO) - log.py:55 : info
+        [2014-08-21 23:45:56,977] (ERROR) - error
+        [2014-08-21 23:45:56,978] (WARNING) - warn
+        [2014-08-21 23:45:56,978] (INFO) - info
     }
     '''
     def __init__(self, \

@@ -38,6 +38,9 @@ class CommandLine:
             self.new()
 
     def clear(self):
+        '''
+        Clear all log files in ./log/
+        '''
         proc = subprocess.call('rm log/*', shell=True)
         try:
             assert proc is 0
@@ -46,6 +49,9 @@ class CommandLine:
             sys.exit()
 
     def new(self):
+        '''
+        Create a new algorithm for outlier detecting
+        '''
         self.log.info('Start creating algorithm template')
         name = ''.join(list(map(lambda x: x.capitalize(), self.args.new_algorithm.strip().split())))
         try:
